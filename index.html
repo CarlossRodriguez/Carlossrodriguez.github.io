@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Test/Webpage</title>
-    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+
 </head>
 <body>
 <style>
+    @keyframes pulse {
+    from {
+        opacity: 0.0;
+        font-size: 100%;
+    }
+
+    to {
+        opacity: 1.0;
+        font-size: 220%;
+    }}
+
     #header1 {font-weight:bold;
         font-family: 'Rock Salt', cursive;
+        color:white;
+        background-color:limegreen;
+        animation-name:pulse;
+        animation-duration: 4s;
+        animation-iteration-count:infinite;
+        animation-direction:alternate-reverse;
+
         text-shadow:
                 rgba(64, 64, 64, 0.5)
-                -2px
-
                 5px
 
-                2px;
+                3px
+
+                0px;
+        box-shadow:
+                rgba(0, 0, 128, 0.25)
+                0px
+
+                9px
+
+                4px;
         text-align:center}
-    body {  background-color:white;  }
-    #header3 {font-family:"serif";}
+
+
+    body {  background-color:lightslategray;  }
+
 
 </style>
 
 <h1 id="header1">*Welcome to my Web page</h1>
 
-<h3 id="header3">Here are some of my current projects</h3>
-<ul>
-    <li><a ref="">My Logo</a></li>
 
-</ul>
 
 
 </body>
