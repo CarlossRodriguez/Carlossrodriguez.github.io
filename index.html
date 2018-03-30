@@ -15,6 +15,16 @@
                 opacity: 1.0;
                 font-size: 245%;
             }}
+        @keyframes move {
+            from {
+                opacity: 0.0;
+                width: 50px;
+            }
+
+            to {
+                opacity: 1.0;
+                width:600px;
+            }}
 
         #header1 {font-weight:bold;
             font-family: 'Rock Salt', cursive;
@@ -57,6 +67,17 @@
             background-color: rgba(245, 195, 113, 0.52);
             color: rgb(0, 0, 0);
         }
+        #fillspace {
+            position:fixed;
+            right: 0px;
+            bottom: 0px;
+            animation-name:move;
+            animation-duration: 2s;
+            animation-iteration-count:infinite;
+            animation-timimg-function: ease-in;
+            animation-direction:alternate;
+
+        }
     </style>
 </head>
 <body>
@@ -66,9 +87,23 @@
     <li><a href="https://carlossrodriguez.github.io/tictactoe.html">Word Guessing Game</a></li>
     <li><a href="#news">Tic-Tac-Toe</a></li>
     <li><a href ="#Logo">My Logo</a><li>
+    <li><a href = "#Favorite activities">Favorite activities</a></li>
 </ul>
 
-
+<svg height="400" width="400" id = "fillspace">
+    <ellipse cx="300" cy="50" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="360" cy="80" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="375" cy="160" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="365" cy="220" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="380" cy="260" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="390" cy="300" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="400" cy="340" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="300" cy="145" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="320" cy="225" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="260" cy="220" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="245" cy="110" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+    <ellipse cx="300" cy="310" rx="40" ry="40" style="fill:rgba(244,255,171,0.09);stroke:#000000;stroke-width:2" />
+</svg>
 
 
 
