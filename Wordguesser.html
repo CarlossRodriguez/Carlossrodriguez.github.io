@@ -3,10 +3,60 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Word Guesser Starter Code</title>
+    <title>Word Guesser</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 80px;
+            background-color: rgba(245, 195, 113, 0.52);
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: rgba(0, 0, 0, 0.99);
+            text-align: right;
+            size:40px;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+        background-color:rgba(245, 195, 113, 0.52);
+        }
+        #guess_display {
+            padding-top: 40px;
+            padding-left: 10px;
+            font-size:20px;
+        }
+        #guess_form {
+            font-size:20px;
+            padding-left: 10px;
+        }
+        #guess_input {
+            font-size:15px;
+        }
+        #guess_status {
+            font-family:'Rock Salt', cursive;
+        }
+        
+    </style>
 </head>
 <body>
 
+<ul>
+    <li><a class="active" href="https://carlossrodriguez.github.io/index.html">Home Page</a></li>
+    <li><a href="About">About</a></li>
+    <li><a href="#">My Logo</a></li>
+    <li><a href="#">Tic-Tac-Toe</a></li>
+    <li style = "float:left"><img src="mygamelogo.png" style ="height:80px;" ></li>
+</ul>
 <div id="guess_display"></div>
 
 
@@ -26,7 +76,7 @@
     var guessStatus = document.getElementById("guess_status");
 
     // Initialize game state variables
-    var secretWord = "randomfruit";
+    var secretWord = "Word";
     var guessedWord = [];
     var guessedLetters = [];
     for (var i = 0; i < secretWord.length; i++) {
@@ -67,17 +117,16 @@
         if (foundLetter) {
             guessStatus.innerHTML = "Yay you found one!";
         } else {
-            guessStatus.innerHTML = "Sorry, not so much!";
+            guessStatus.innerHTML = "Sorry, guess again!";
         }
         if (hasWon()) {
-            guessStatus.innerHTML += "WOOO WINNER WINNER!";
+            guessStatus.innerHTML += "WINNER WINNER WINNER!";
         }
         displayGuessedWord();
         guessInput.value = "";
     });
     displayGuessedWord();
-
+    rect(100,200,100,100);
 
 </script>
-
 </body>
