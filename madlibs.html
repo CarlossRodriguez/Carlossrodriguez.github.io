@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Mad Libs</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 80px;
+            background-color: rgba(245, 195, 113, 0.52);
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: rgba(0, 0, 0, 0.99);
+            text-align: right;
+            size:40px;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: rgba(245, 195, 113, 0.52);
+        }
+
+        table, th, td {
+            border: 1.5px solid black;}
+
+        th{
+            font-size:18px;
+        }
+        td {
+            text-align: center
+        }
+
+        #story {
+            font-size: 20px;
+        }
+        
+        h1 {
+            font-size: 45px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="https://carlossrodriguez.github.io/index.html">Home Page</a></li>
+    <li><a href="About">About</a></li>
+    <li><a href="#">My Logo</a></li>
+    <li><a href="#">Tic-Tac-Toe</a></li>
+    <li style = "float:left"><img src="mygamelogo.png" style ="height:80px;" ></li>
+</ul>
+<h1>Mad Libs</h1>
+
+
+<form id="lib-form">
+    <label>
+        Noun: <input type="text" id="noun">
+        <br><br>
+        Noun: <input type="text" id="noun2">
+        <br><br>
+        Adjective: <input type="text" id="adjective">
+        <br><br>
+        Adjective: <input type="text" id="adjective2">
+    </label>
+    <br/>
+    <button type="submit">Enter!</button>
+</form>
+
+<div id="story"></div>
+
+<p>This is the start of a Mad Libs game.
+    <br>
+    <strong>Step 1:</strong> Input any noun into the box but do capitalize the first letter.
+    <br>
+    <strong>Step 2:</strong>Input any adjective into the box and hit Enter.
+</p>
+
+<script>
+    var libForm = document.getElementById("lib-form");
+    libForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var nounVal = document.getElementById("noun").value;
+        var nounVal2 = document.getElementById("noun2").value;
+        var adjectiveVal = document.getElementById("adjective").value;
+        var adjectiveVal2 = document.getElementById("adjective2").value;
+        if(nounVal === "Book"){
+            nounVal = "<img src='https://thumb9.shutterstock.com/display_pic_with_logo/1296628/123034798/stock-photo-the-big-book-123034798.jpg' height='90' width='90'>";
+        }
+        else if(nounVal === "Lion"){
+            nounVal = "<img src='https://cdn.pixabay.com/photo/2017/12/26/16/09/lion-3040797_960_720.jpg' height='90' width='90'>";
+        }
+        else if(nounVal === "Car"){
+            nounVal = "<img src='https://cdn.pixabay.com/photo/2018/04/20/08/06/auto-3335336_960_720.jpg' height='90' width='90'>";
+        }
+        if(nounVal2 === "Book"){
+            nounVal2 = "<img src='https://thumb9.shutterstock.com/display_pic_with_logo/1296628/123034798/stock-photo-the-big-book-123034798.jpg' height='90' width='90'>";
+        }
+        else if(nounVal2 === "Lion"){
+            nounVal2 = "<img src='https://cdn.pixabay.com/photo/2017/12/26/16/09/lion-3040797_960_720.jpg' height='90' width='90'>";
+        }
+        else if(nounVal2 === "Car"){
+            nounVal2 = "<img src='https://cdn.pixabay.com/photo/2018/04/20/08/06/auto-3335336_960_720.jpg' height='90' width='90'>";
+        }
+
+        var storyDiv = document.getElementById("story");
+        storyDiv.innerHTML = "The great big " + nounVal + " went to the store. " + "In the store there was a "+ adjectiveVal +" " + nounVal2 +". The "+ nounVal+ " and "+ nounVal2+" said hello and they both went different "+adjectiveVal2 +" ways."
+
+    });
+
+</script>
+
+<h2>Word Bank</h2>
+<p>Note* You <strong>don't have to</strong> choose from these words, they're only suggestions.</p>
+
+<table style="width:50%">
+    <tr>
+        <th>Nouns</th>
+        <th>Adjectives</th>
+    </tr>
+    <tr>
+        <td>Book</td>
+        <td>Funny</td>
+
+    </tr>
+    <tr>
+        <td>Lion</td>
+        <td>Loud</td>
+
+    </tr>
+    <tr>
+        <td>Car</td>
+        <td>Sad</td>
+
+    </tr>
+</table>
+
+
+</body>
+</html>
