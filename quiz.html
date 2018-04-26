@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style>
+        h3 {
+            font-size: 40px;
+            font-family: Calibri;
+            color: lightcoral;
+        }
+        body{
+            background-color: antiquewhite;
+        }
+        fieldset{
+            font-size: 18px;
+        }
+        legend {
+            font-family: "Century Schoolbook";
+        }
+
+    </style>
+</head>
+<body>
+
+<h3>Exciting Quiz Time!</h3>
+<form id="quiz-form">
+
+    <!-- First Question-->
+    <fieldset>
+        <legend>What language is this programmed in?</legend>
+        <label><input name="question1" value="javascript" type="radio">JavaScript</label><br>
+        <label><input name="question1" value="python" type="radio">Python</label><br>
+        <label><input name="question1" value="java" type="radio">Java</label><br>
+    </fieldset>
+
+    <!-- Second Question-->
+    <fieldset>
+        <legend>How would you multiply 2 and 3 in Javascript?</legend>
+        <label><input name="question2" value="2 ! 3" type="radio">2 ! 3</label><br>
+        <label><input name="question2" value="2 % 3" type="radio">2 % 3</label><br>
+        <label><input name="question2" value="2 * 3" type="radio">2 * 3</label><br>
+    </fieldset>
+
+    <button type="submit">Check me</button>
+</form>
+
+<div id="results"></div>
+<div id="results2"></div>
+<div id ="number"></div>
+
+<ul>
+    <li>Refresh page before trying again</li>
+</ul>
+
+<script>
+
+    var score = 0;
+    var scoreDiv = document.getElementById("number");
+    var quizForm = document.getElementById("quiz-form");
+    quizForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // resultsDiv is the div to display the results in
+        var resultsDiv = document.getElementById("results");
+
+        // answer1 stores whatever <input> element that they checked
+        //  or null if they didn't check any answer
+        var answer1 = document.querySelector('[name="question1"]:checked');
+        if (!answer1) {
+            resultsDiv.innerHTML = "You didn't check anything!";
+        } else {
+            // answer1.value is the value attribute of the checked <input>
+            if (answer1.value === "javascript") {
+                resultsDiv.innerHTML = "Q1:You got it!"; score += 1;
+
+            } else {
+                resultsDiv.innerHTML = "Q1:Try again!";
+            }
+        }
+        scoreDiv.innerHTML = "your final score is "+ score;
+    });
+
+        var quizForm2 = document.getElementById("quiz-form");
+        quizForm2.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // resultsDiv is the div to display the results in
+            var resultsDiv2 = document.getElementById("results2");
+
+            // answer1 stores whatever <input> element that they checked
+            //  or null if they didn't check any answer
+            var answer2 = document.querySelector('[name="question2"]:checked');
+            if (!answer2) {
+                resultsDiv2.innerHTML = "You didn't check anything!";
+            } else {
+                // answer1.value is the value attribute of the checked <input>
+                if (answer2.value === "2 * 3") {
+                    resultsDiv2.innerHTML = "Q2:You got it!"; score += 1;
+                } else {
+                    resultsDiv2.innerHTML = "Q2:Try again!";
+                }
+            }
+            scoreDiv.innerHTML = "your final score is "+ score;
+        });
+
+</script>
+
+</body>
+</html>
