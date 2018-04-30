@@ -3,44 +3,56 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>JS Bin</title>
+    <title>Geo Quiz</title>
     <style>
         h3 {
             font-size: 40px;
             font-family: Calibri;
             color: lightcoral;
         }
+
         body{
             background-color: antiquewhite;
         }
         fieldset{
-            font-size: 18px;
+            font-size: 20px;
         }
         legend {
             font-family: "Century Schoolbook";
+        }
+        img {
+            size: 80px;
         }
 
     </style>
 </head>
 <body>
 
-<h3>Exciting Quiz Time!</h3>
+<h3>Geo Quiz Time!<br>Try and guess the location of the images</h3>
+
 <form id="quiz-form">
 
     <!-- First Question-->
     <fieldset>
-        <legend>What language is this programmed in?</legend>
-        <label><input name="question1" value="javascript" type="radio">JavaScript</label><br>
-        <label><input name="question1" value="python" type="radio">Python</label><br>
-        <label><input name="question1" value="java" type="radio">Java</label><br>
+        <img src="https://maps.googleapis.com/maps/api/streetview?size=500x500&location=37.7925161,-122.3840362&heading=291.55&pitch=0&fov=100&key=AIzaSyBuJk0ZN3yMa6mM8lOX9-Qhn-x1QEfa6tY" alt="Streetview of something"><br>
+        <label><input name="question1" value="San Francisco" type="radio">San Francisco</label><br>
+        <label><input name="question1" value="wrong" type="radio">New York</label><br>
+        <label><input name="question1" value="wrong" type="radio">Brooklyn</label><br>
     </fieldset>
 
     <!-- Second Question-->
     <fieldset>
-        <legend>How would you multiply 2 and 3 in Javascript?</legend>
-        <label><input name="question2" value="2 ! 3" type="radio">2 ! 3</label><br>
-        <label><input name="question2" value="2 % 3" type="radio">2 % 3</label><br>
-        <label><input name="question2" value="2 * 3" type="radio">2 * 3</label><br>
+        <img src="https://maps.googleapis.com/maps/api/streetview?size=500x500&location=37.8725037,-122.2585667&heading=114.5&pitch=0&fov=100&key=AIzaSyBuJk0ZN3yMa6mM8lOX9-Qhn-x1QEfa6tY" alt="Streetview of something"><br>
+        <label><input name="question2" value="2 ! 3" type="radio">Los Angeles</label><br>
+        <label><input name="question2" value="2 % 3" type="radio">Sacramento</label><br>
+        <label><input name="question2" value="2 * 3" type="radio">Berkeley</label><br>
+    </fieldset>
+
+    <fieldset>
+        <img src="https://maps.googleapis.com/maps/api/streetview?size=500x500&location=-22.9524491,-43.2106162&heading=86.64&pitch=0&fov=100&key=AIzaSyBuJk0ZN3yMa6mM8lOX9-Qhn-x1QEfa6tY" alt="Streetview of something"><br>
+        <label><input name="question3" value="Lima" type="radio">Lima</label><br>
+        <label><input name="question3" value="Santiago" type="radio">Santiago</label><br>
+        <label><input name="question3" value="Rio de janeiro" type="radio">Rio de janeiro</label><br>
     </fieldset>
 
     <button type="submit">Check me</button>
@@ -72,7 +84,7 @@
             resultsDiv.innerHTML = "You didn't check anything!";
         } else {
             // answer1.value is the value attribute of the checked <input>
-            if (answer1.value === "javascript") {
+            if (answer1.value === "San Francisco") {
                 resultsDiv.innerHTML = "Q1:You got it!"; score += 1;
 
             } else {
@@ -82,28 +94,51 @@
         scoreDiv.innerHTML = "your final score is "+ score;
     });
 
-        var quizForm2 = document.getElementById("quiz-form");
-        quizForm2.addEventListener("submit", function(event) {
-            event.preventDefault();
+    var quizForm2 = document.getElementById("quiz-form");
+    quizForm2.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-            // resultsDiv is the div to display the results in
-            var resultsDiv2 = document.getElementById("results2");
+        // resultsDiv is the div to display the results in
+        var resultsDiv2 = document.getElementById("results2");
 
-            // answer1 stores whatever <input> element that they checked
-            //  or null if they didn't check any answer
-            var answer2 = document.querySelector('[name="question2"]:checked');
-            if (!answer2) {
-                resultsDiv2.innerHTML = "You didn't check anything!";
+        // answer1 stores whatever <input> element that they checked
+        //  or null if they didn't check any answer
+        var answer2 = document.querySelector('[name="question2"]:checked');
+        if (!answer2) {
+            resultsDiv2.innerHTML = "You didn't check anything!";
+        } else {
+            // answer1.value is the value attribute of the checked <input>
+            if (answer2.value === "2 * 3") {
+                resultsDiv2.innerHTML = "Q2:You got it!"; score += 1;
             } else {
-                // answer1.value is the value attribute of the checked <input>
-                if (answer2.value === "2 * 3") {
-                    resultsDiv2.innerHTML = "Q2:You got it!"; score += 1;
-                } else {
-                    resultsDiv2.innerHTML = "Q2:Try again!";
-                }
+                resultsDiv2.innerHTML = "Q2:Try again!";
             }
-            scoreDiv.innerHTML = "your final score is "+ score;
-        });
+        }
+        scoreDiv.innerHTML = "your final score is "+ score;
+    });
+
+    var quizForm3 = document.getElementById("quiz-form");
+    quizForm3.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // resultsDiv is the div to display the results in
+        var resultsDiv3 = document.getElementById("results3");
+
+        // answer1 stores whatever <input> element that they checked
+        //  or null if they didn't check any answer
+        var answer3 = document.querySelector('[name="question3"]:checked');
+        if (!answer3) {
+            resultsDiv3.innerHTML = "You didn't check anything!";
+        } else {
+            // answer1.value is the value attribute of the checked <input>
+            if (answer3.value === "Rio de janeiro") {
+                resultsDiv3.innerHTML = "Q3:You got it!"; score += 1;
+            } else {
+                resultsDiv3.innerHTML = "Q3:Try again!";
+            }
+        }
+        scoreDiv.innerHTML = "your final score is "+ score;
+    });
 
 </script>
 
