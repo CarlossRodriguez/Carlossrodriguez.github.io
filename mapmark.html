@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        img {
+            height:40px;
+            width:70px;
+        }
+    </style>
+</head>
+<body>
+<h1>My Favorite Places</h1>
+<div id="map"></div>
+    <script>
+        function initMap() {
+            var mapDiv = document.getElementById('map');
+
+            var map = new google.maps.Map(mapDiv, {
+                zoom: 5.7,
+                center: {lat:37.8425457, lng: -118.19311},
+                gestureHandling: 'greedy'
+            });
+
+            var marker1 = new google.maps.Marker({//Picante
+                position: {lat:37.8782369, lng: -122.3012204},
+                map: map
+            });
+
+            var marker2 = new google.maps.Marker({//Moswood Park
+                position: {lat:37.8239103, lng: -122.2610742},
+                map: map
+            });
+
+            var marker3 = new google.maps.Marker({//Virginia City
+                position: {lat:39.3111106, lng: -119.64943},
+                map: map
+            });
+
+            var marker4 = new google.maps.Marker({//Riverside
+                position: {lat:33.9849355, lng: -117.3919574},
+                map: map
+            });
+
+            var marker5 = new google.maps.Marker({//Soccer Park
+                position: {lat:37.8815555, lng: -122.3039308},
+                map: map
+            });
+
+            var info1 = new google.maps.InfoWindow({
+                content: '<marquee>Picante</marquee>'
+            });
+            marker1.addListener('click', function() {
+                info1.open(map, marker1);
+            });
+
+            var info2 = new google.maps.InfoWindow({
+                content: '<marquee>MossWood Park</marquee><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Mosswoodpark.jpg/1200px-Mosswoodpark.jpg">'
+            });
+
+            marker2.addListener('click', function() {
+                info2.open(map, marker2);
+            });
+
+            var info3 = new google.maps.InfoWindow({
+                content: '<marquee>Virginia City</marquee><img src="https://www.desertusa.com/cities/nv/photos/C_Street_DSC_4784-m800.jpg">'
+            });
+
+            marker3.addListener('click', function() {
+                info3.open(map, marker3);
+            });
+
+            var info4 = new google.maps.InfoWindow({
+                content: '<marquee>Riverside</marquee>'
+            });
+
+            marker4.addListener('click', function() {
+                info4.open(map, marker4);
+            });
+
+            var info5 = new google.maps.InfoWindow({
+                content: '<marquee>Berkeley Soccer Park</marquee>'
+            });
+            marker5.addListener('click', function() {
+                info5.open(map, marker5);
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrSAqX0DuI-ZA3xrvnSZ_atK5GvXFelQQ&callback=initMap">
+    </script>
+</body>
+</html>
