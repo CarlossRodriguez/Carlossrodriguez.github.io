@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    canvas {
+      border: 10px solid rgb(255, 165, 0);
+      background-color: black;
+      margin: auto;
+      display: block;
+    }
+    h1 {
+      text-align:center;
+      color: rgb(255, 165, 0);
+      background-color: black;
+      font-size: 50px;
+      box-shadow:
+        rgba(0, 0, 128, 0.25)
+        -1px
+        9px
+        9px;}
+  </style>
+</head>
+<body>
+<h1>Js game</h1>
+<canvas id="Canvas" width="500" height="350"></canvas>
+
+
+<script>
+  var canvas = document.getElementById("Canvas");
+  var ctx = canvas.getContext("2d");
+  var x = canvas.width/2;
+  var y = canvas.height/2;
+  var Goalradius = 10;
+  var Avoidradius = 15;
+  var avoidx = canvas.width/10;
+  var avoidy = canvas.height - 40;
+  var avoidx2 = canvas.width - 20;
+  var avoidy2 = canvas.height - 40;
+  var avoidx3 = canvas.width/2;
+  var avoidy3 = canvas.height/2;
+  var avoidx4 = canvas.width/2;
+  var avoidy4 = canvas.height/2;
+  var drawavoidx = -.0;//draw x-axis for the red circle
+  var drawavoidy = -.0;//draw y-axis for the red circle
+  var drawavoidx2 = .1;//draw x-axis for the red circle
+  var drawavoidy2 = -.1;//draw y-axis for the red circle
+  var drawavoidx3 = 0;//draw x-axis for the red circle
+  var drawavoidy3 = -.2;//draw y-axis for the red circle
+  var drawavoidx4 = .2;//draw x-axis for the red circle
+  var drawavoidy4 = 0;//draw y-axis for the red circle
+  var drawgoalx = .3; //draw x-axis for the green circle
+  var drawgoaly = -.3;//draw y-axis for the green circle
+  var playerHeight = 30;
+  var playerWidth = 30;
+  var playerx = canvas.width/2; //Player position-x
+  var playery = 300; //Player position-y
+  var drawplayerx = 0;
+  var drawplayery = 0;
+  var leftPressed = false;
+  var upPressed = false;
+  var downPressed = false;
+  var rightPressed = false;
+
+  var score = 0;
+
+  document.addEventListener("keydown", keyDownHandler, false);
+  document.addEventListener("keyup", keyUpHandler, false);
+  function keyDownHandler(e) {
+    if(e.keyCode == 37) {
+      leftPressed = true;
+    }
+    else if(e.keyCode == 38) {
+      upPressed = true;
+    }
+    else if(e.keyCode == 40) {
+      downPressed = true;
+    }
+    else if(e.keyCode === 39){
+      rightPressed = true;
+    }
+  }
+
+  function keyUpHandler(e) {
+    if(e.keyCode == 37) {
+      leftPressed = false;
+    }
+    else if(e.keyCode == 38) {
+      upPressed = false;
+    }
+    else if(e.keyCode == 40) {
+      downPressed = false;
+    }
+    else if(e.keyCode === 39){
+      rightPressed = false;
+    }
+  }
+
+  function drawGoal() {
+    ctx.beginPath();
+    ctx.arc(x, y, Goalradius, 0, Math.PI*2);
+    ctx.fillStyle = "#00ff00";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function drawAvoid(){
+    ctx.beginPath();
+    ctx.arc(avoidx, avoidy, Avoidradius, 0, Math.PI*2);
+    ctx.fillStyle = "#ff0000";
+    ctx.fill();
+    ctx.closePath();
+  }
+  function drawAvoid2(){
+    ctx.beginPath();
+    ctx.arc(avoidx2, avoidy2, Avoidradius, 0, Math.PI*2);
+    ctx.fillStyle = "#ff0000";
+    ctx.fill();
+    ctx.closePath();
+  }
+  function drawAvoid3(){
+    ctx.beginPath();
+    ctx.arc(avoidx3, avoidy3, Avoidradius, 0, Math.PI*2);
+    ctx.fillStyle = "#ff0000";
+    ctx.fill();
+    ctx.closePath();
+  }
+  function drawAvoid4(){
+    ctx.beginPath();
+    ctx.arc(avoidx4, avoidy4, Avoidradius, 0, Math.PI*2);
+    ctx.fillStyle = "#ff0000";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function drawPlayer() {
+    ctx.beginPath();
+    ctx.rect(playerx, playery, playerWidth, playerHeight);
+    ctx.fillStyle = "#0000ff";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawGoal();
+    drawAvoid();
+    //drawAvoid2();
+    //drawAvoid3();
+    //drawAvoid4();
+    drawPlayer();
+    //Bounce effect for the goal
+    if(x + drawgoalx > canvas.width-Goalradius || x + drawgoalx < Goalradius) {
+      drawgoalx = -drawgoalx; //Restriction x-axis
+    }
+    if(y + drawgoaly > canvas.height-Goalradius || y + drawgoaly < Goalradius) {
+      drawgoaly = -drawgoaly; //Restriction y-axis
+    }
+    x += drawgoalx;
+    y += drawgoaly;
+
+    //Bounce effect for the first red circle
+    if(avoidx + drawavoidx > canvas.width-Avoidradius || avoidx + drawavoidx < Avoidradius) {
+      drawavoidx = -drawavoidx; //Restriction x-axis
+    }
+    if(avoidy + drawavoidy > canvas.height-Avoidradius || avoidy + drawavoidy < Avoidradius) {
+      drawavoidy = -drawavoidy; //Restriction y-axis
+    }
+    avoidx += drawavoidx;
+    avoidy += drawavoidy;
+
+    //Bounce effect for a second red circle
+    if(avoidx2 + drawavoidx2 > canvas.width-Avoidradius || avoidx2 + drawavoidx2 < Avoidradius) {
+      drawavoidx2 = -drawavoidx2; //Restriction x-axis
+    }
+    if(avoidy2 + drawavoidy2 > canvas.height-Avoidradius || avoidy2 + drawavoidy2 < Avoidradius) {
+      drawavoidy2 = -drawavoidy2; //Restriction y-axis
+    }
+    avoidx2 += drawavoidx2;
+    avoidy2 += drawavoidy2;
+
+    //Bounce effect for a third red circle
+    if(avoidx3 + drawavoidx3 > canvas.width-Avoidradius || avoidx3 + drawavoidx3 < Avoidradius) {
+      drawavoidx3 = -drawavoidx3; //Restriction x-axis
+    }
+    if(avoidy3 + drawavoidy3 > canvas.height-Avoidradius || avoidy3 + drawavoidy3 < Avoidradius) {
+      drawavoidy3 = -drawavoidy3; //Restriction y-axis
+    }
+    avoidx3 += drawavoidx3;
+    avoidy3 += drawavoidy3;
+
+    //Bounce effect for ther fourth red circle
+    if(avoidx4 + drawavoidx4 > canvas.width-Avoidradius || avoidx4 + drawavoidx4 < Avoidradius) {
+      drawavoidx4 = -drawavoidx4; //Restriction x-axis
+    }
+    if(avoidy4 + drawavoidy4 > canvas.height-Avoidradius || avoidy4 + drawavoidy4 < Avoidradius) {
+      drawavoidy4 = -drawavoidy4; //Restriction y-axis
+    }
+    avoidx4 += drawavoidx4;
+    avoidy4 += drawavoidy4;
+
+
+    if(rightPressed && playerx < canvas.width-playerWidth) {
+      playerx += 4;
+    }
+    if(leftPressed && playerx > 0) {
+      playerx -= 4;
+    }
+    if(upPressed && playery > 0) {
+      playery -= 4;
+    }
+    if(downPressed && playery < canvas.height - playerHeight) {
+      playery += 4;
+    }
+    
+  }
+    playerx += drawplayerx;
+    playery += drawplayery;
+
+    //if(avoidx >= (playerx - Avoidradius) && avoidx <= (playerx + playerWidth)) && (avoidy >= (playery - Avoidradius) && avoidy <= (Avoidradius + playery)){
+      //score += -1
+    //}
+    
+
+  setInterval(draw, 10)//Rate at which the re-drawing occurs;
+</script>
+</body>
+</html>
